@@ -1,0 +1,28 @@
+{
+  "name": "udaykiran",
+  "version": "1.0.1",
+  "private": false,
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "homepage": "https://udaykiran.dev/",
+  "repository": {
+    "url": "https://github.com/udaykirancodes"
+  },
+  "bin": {
+    "udaykiran": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --platform node --format esm --dts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  }
+}
