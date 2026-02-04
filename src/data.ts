@@ -5,6 +5,7 @@ export const USER = {
   firstName: "Uday Kiran",
   lastName: "Bandarugalla",
   fullName: "Uday Kiran Bandarugalla",
+  description: `I'm Udaykiran, a Software Developer at HexaCluster, with 1.5 years of experience building high-quality web applications using Next.js, React, and TypeScript. I also work on scalable backend services using Node.js, Spring Boot, and Golang, focusing on microservices architecture.`,
   gender: "Male",
   socials: [
     {
