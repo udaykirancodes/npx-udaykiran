@@ -2,7 +2,7 @@
   "name": "udaykiran",
   "version": "1.0.3",
   "private": false,
-  "description": "",
+  "description": "Interactive CLI portfolio of Uday Kiran",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
