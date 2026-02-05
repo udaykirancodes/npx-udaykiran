@@ -1,28 +1,52 @@
 import boxen from "boxen";
 import chalk from "chalk";
+import ora from "ora";
 import { EXPERIENCE, PROJECTS, TECH_STACK, USER } from "./data";
 
-export function showHeader() {
-  console.clear();
+const theme = {
+  primary: chalk.cyan,
+  secondary: chalk.blue,
+  accent: chalk.magenta,
+  success: chalk.green,
+  warning: chalk.yellow,
+  error: chalk.red,
+  muted: chalk.dim,
+  highlight: chalk.bold.white,
+};
 
-  const content = [
-    chalk.cyanBright.bold(USER.fullName),
-    chalk.white("Full-Stack Developer"),
-    chalk.gray("React • Next.js • Node • TypeScript"),
+export async function showLoading(message: string = "Loading", timeout = 1200) {
+  const spinner = ora({
+    text: chalk.dim(message),
+    spinner: "dots12",
+    color: "cyan",
+  }).start();
+
+  await new Promise((resolve) => setTimeout(resolve, timeout));
+  spinner.stop();
+}
+
+export function showHeader() {
+  const tagline = [
+    theme.primary(chalk.bold(USER.fullName.toUpperCase())),
+    "",
+    theme.highlight("Full-Stack Developer"),
+    "",
+    theme.muted("React • Next.js • Node.js • TypeScript • Golang"),
+    "",
+    theme.muted(
+      "Building scalable web applications & solving real-world problems",
+    ),
   ].join("\n");
 
   console.log(
-    boxen(content, {
-      padding: 1,
-      margin: 1,
+    boxen(tagline, {
+      padding: { top: 1, bottom: 1, left: 3, right: 3 },
+      margin: { top: 1, bottom: 1 },
       borderStyle: "round",
       borderColor: "cyan",
       align: "center",
     }),
   );
-  console.log();
-  console.log(USER.description);
-  console.log();
 }
 
 export function showAbout() {
