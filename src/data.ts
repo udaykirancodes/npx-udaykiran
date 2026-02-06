@@ -33,62 +33,92 @@ export const TECH_STACK = [
   {
     key: "typescript",
     title: "TypeScript",
+    category: "Frontend",
   },
   {
     key: "js",
     title: "JavaScript",
-  },
-  {
-    key: "golang",
-    title: "GoLang",
-  },
-  {
-    key: "java",
-    title: "Java",
+    category: "Frontend",
   },
   {
     key: "nodejs",
     title: "Node.js",
+    category: "Backend",
+  },
+  {
+    key: "golang",
+    title: "GoLang",
+    category: "Backend",
+  },
+  {
+    key: "java",
+    title: "Java",
+    category: "Backend",
   },
   {
     key: "react",
     title: "React",
+    category: "Frontend",
   },
   {
     key: "nextjs2",
     title: "Next.js",
+    category: "Frontend",
   },
   {
     key: "tailwindcss",
     title: "Tailwind CSS",
+    category: "Frontend",
   },
   {
     key: "shadcn-ui",
     title: "shadcn/ui",
+    category: "Frontend",
   },
   {
     key: "motion",
     title: "Motion",
+    category: "Frontend",
   },
   {
     key: "redux",
     title: "Redux",
+    category: "Frontend",
   },
   {
     key: "react-router",
     title: "React Router",
+    category: "Frontend",
   },
   {
     key: "git",
     title: "Git",
+    category: "DevOps",
   },
   {
     key: "docker",
     title: "Docker",
+    category: "DevOps",
   },
   {
     key: "figma",
     title: "Figma",
+    category: "Others",
+  },
+  {
+    key: "zustand",
+    title: "Zustand",
+    category: "Frontend",
+  },
+  {
+    key: "postgresql",
+    title: "PostgreSQL",
+    category: "Database",
+  },
+  {
+    key: "drizzle",
+    title: "Drizzle",
+    category: "Others",
   },
 ];
 

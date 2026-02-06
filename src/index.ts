@@ -52,6 +52,8 @@ async function mainMenu() {
     },
   ]);
 
+  await showLoading("Loading...", 300);
+
   switch (choice) {
     case "about":
       showAbout();
@@ -90,7 +92,7 @@ async function init() {
   // Clear the console
   console.clear();
   // Show loading spinner
-  await showLoading("Initializing portfolio...");
+  // await showLoading("Initializing portfolio...");
 
   showHeader();
   mainMenu();
