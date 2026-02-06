@@ -8,6 +8,7 @@ import {
   showExperience,
   showHeader,
   showLoading,
+  showMiniHeader,
   showProjects,
   showTechStack,
 } from "./ui";
@@ -53,6 +54,8 @@ async function mainMenu() {
   ]);
 
   await showLoading("Loading...", 300);
+
+  showMiniHeader();
 
   switch (choice) {
     case "about":

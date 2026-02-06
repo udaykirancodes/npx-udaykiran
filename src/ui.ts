@@ -51,11 +51,32 @@ export function showHeader() {
   );
 }
 
+export const showMiniHeader = () => {
+  console.clear();
+  const tagline = [
+    theme.primary(
+      chalk.bold(USER.fullName.toUpperCase()) +
+        " | " +
+        theme.highlight("Full-Stack Developer"),
+    ),
+    "",
+    theme.muted("React • Next.js • Node.js • TypeScript • Golang"),
+  ].join("\n");
+  console.log(
+    boxen(tagline, {
+      padding: { top: 1, bottom: 1, left: 3, right: 3 },
+      margin: { top: 1, bottom: 1 },
+      borderStyle: "classic",
+      borderColor: "cyan",
+      align: "center",
+    }),
+  );
+};
+
 export function showAbout() {
-  showHeader();
+  console.log(theme.warning.bold("\n  👋  ABOUT ME\n"));
   // Profile card
   const profileContent = [
-    theme.highlight(USER.fullName),
     theme.muted(USER.email),
     "",
     chalk.white(USER.description),
@@ -65,8 +86,8 @@ export function showAbout() {
     boxen(profileContent, {
       padding: 1,
       margin: { left: 2, right: 2 },
-      borderStyle: "single",
-      borderColor: "cyan",
+      borderStyle: "round",
+      borderColor: "green",
     }),
   );
 
@@ -87,7 +108,6 @@ export function showAbout() {
 }
 
 export function showTechStack() {
-  showHeader();
   console.log(theme.warning.bold("\n  🛠️  TECH STACK\n"));
   const categories = TECH_STACK.reduce(
     (acc, tech) => {
@@ -122,7 +142,6 @@ export function showTechStack() {
 }
 
 export function showProjects() {
-  showHeader();
   console.log(theme.secondary.bold("\n  🚀  PROJECTS\n"));
 
   PROJECTS.map((project, index) => {
@@ -171,7 +190,6 @@ export function showProjects() {
 }
 
 export function showExperience() {
-  showHeader();
   console.log(theme.secondary.bold("\n  💼  WORK EXPERIENCE\n"));
   let str = "";
 
@@ -229,7 +247,7 @@ export async function showContact() {
     boxen(contactCard, {
       padding: 1,
       margin: { left: 2, right: 2 },
-      borderStyle: "double",
+      borderStyle: "round",
       borderColor: "green",
     }),
   );

@@ -1,14 +1,14 @@
 {
   "name": "udaykiran",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": false,
   "description": "Interactive CLI portfolio of Uday Kiran",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "homepage": "https://udaykiran.dev/",
+  "homepage": "https://github.com/udaykirancodes/npx-udaykiran",
   "repository": {
-    "url": "https://github.com/udaykirancodes"
+    "url": "https://github.com/udaykirancodes/npx-udaykiran"
   },
   "bin": {
     "udaykiran": "./dist/index.js"
