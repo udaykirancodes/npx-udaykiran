@@ -1,3 +1,4 @@
+import open from "open";
 export function formatTimeline(from: Date, to: Date | null): string {
   const formatDate = (date: Date) => {
     return date.toLocaleDateString("en-US", {
@@ -25,4 +26,8 @@ export function calculateDuration(from: Date, to: Date | null): string {
   if (remainingMonths === 0)
     return `${years} ${years === 1 ? "year" : "years"}`;
   return `${years} ${years === 1 ? "year" : "years"}, ${remainingMonths} ${remainingMonths === 1 ? "month" : "months"}`;
+}
+
+export const openLink = (link : string) => {
+  open(link)
 }

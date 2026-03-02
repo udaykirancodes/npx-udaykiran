@@ -2,6 +2,7 @@
 
 import chalk from "chalk";
 import inquirer from "inquirer";
+import { USER } from "./data";
 import {
   showAbout,
   showContact,
@@ -12,6 +13,7 @@ import {
   showProjects,
   showTechStack,
 } from "./ui";
+import { openLink } from "./utils";
 
 async function mainMenu() {
   const WIDTH = 20;
@@ -48,6 +50,8 @@ async function mainMenu() {
           name: "📬 Contact".padEnd(WIDTH, " ") + chalk.dim(" — Let's connect"),
           value: "contact",
         },
+        { name: "🌍 Visit Portfolio", value: "portfolio" },
+        { name: "🌱 Checkout Github", value: "github" },
         { name: "❌ Exit", value: "exit" },
       ],
     },
@@ -73,11 +77,19 @@ async function mainMenu() {
     case "contact":
       showContact();
       break;
+    case "portfolio":
+      openLink(USER.portfolio);
+      break;
+    case "github":
+      openLink(USER.socials[0].href);
+      break;
     case "exit":
       process.exit(0);
   }
 
-  await pause();
+  if(choice !== "portfolio" || choice !== "github"){
+    await pause();
+  }
   await mainMenu();
 }
 

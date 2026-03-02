@@ -75,9 +75,10 @@ export const showMiniHeader = () => {
 
 export function showAbout() {
   console.log(theme.warning.bold("\n  👋  ABOUT ME\n"));
-  // Profile card
+  
+  // Profile card with enhanced styling
   const profileContent = [
-    theme.muted(USER.email),
+    theme.primary("📧 ") + theme.muted(USER.email),
     "",
     chalk.white(USER.description),
   ].join("\n");
@@ -93,22 +94,21 @@ export function showAbout() {
 
   console.log();
 
-  // Quick stats
-  console.log(theme.muted("  Quick Stats:"));
+  // Quick stats with better formatting
+  console.log(theme.muted("  ─".repeat(30)));
   console.log();
-  console.log(`    ${theme.success("✓")} 1.5+ yearsof professional experience`);
-  console.log(`    ${theme.success("✓")} Full-stack development expertise`);
-  console.log(
-    `    ${theme.success("✓")} Worked on micro-frontend architecture`,
-  );
-  console.log(
-    `    ${theme.success("✓")} Building animated components with motion`,
-  );
+  console.log(`  ${theme.success("✓")} 1.5+ years of professional experience`);
+  console.log(`  ${theme.success("✓")} Full-stack development expertise`);
+  console.log(`  ${theme.success("✓")} Worked on micro-frontend architecture`);
+  console.log(`  ${theme.success("✓")} Building animated components with motion`);
+  console.log();
+  console.log(theme.muted("  ─".repeat(30)));
   console.log();
 }
 
 export function showTechStack() {
   console.log(theme.warning.bold("\n  🛠️  TECH STACK\n"));
+  
   const categories = TECH_STACK.reduce(
     (acc, tech) => {
       const category = tech.category || "Others";
@@ -119,74 +119,69 @@ export function showTechStack() {
     {} as Record<string, typeof TECH_STACK>,
   );
 
-  console.log(theme.primary("• Frontend"));
+  console.log(theme.muted("  ─".repeat(30)));
+  console.log();
+  console.log(theme.primary("  Frontend"));
   console.log(
-    theme.muted(categories.Frontend.map((t) => `  • ${t.title}`).join(" ")),
+    theme.muted("  " + categories.Frontend.map((t) => t.title).join(" • ")),
   );
-  console.log(theme.primary("• Backend"));
+  console.log();
+  console.log(theme.primary("  Backend"));
   console.log(
-    theme.muted(categories.Backend.map((t) => `  • ${t.title}`).join(" ")),
+    theme.muted("  " + categories.Backend.map((t) => t.title).join(" • ")),
   );
-  console.log(theme.primary("• Database"));
+  console.log();
+  console.log(theme.primary("  Database"));
   console.log(
-    theme.muted(categories.Database.map((t) => `  • ${t.title}`).join(" ")),
+    theme.muted("  " + categories.Database.map((t) => t.title).join(" • ")),
   );
-  console.log(theme.primary("• DevOps"));
+  console.log();
+  console.log(theme.primary("  DevOps"));
   console.log(
-    theme.muted(categories.DevOps.map((t) => `  • ${t.title}`).join(" ")),
+    theme.muted("  " + categories.DevOps.map((t) => t.title).join(" • ")),
   );
-  console.log(theme.primary("• Others"));
+  console.log();
+  console.log(theme.primary("  Others"));
   console.log(
-    theme.muted(categories.Others.map((t) => `  • ${t.title}`).join("")),
+    theme.muted("  " + categories.Others.map((t) => t.title).join(" • ")),
   );
+  console.log();
+  console.log(theme.muted("  ─".repeat(30)));
+  console.log();
 }
 
 export function showProjects() {
   console.log(theme.secondary.bold("\n  🚀  PROJECTS\n"));
+  let str = "";
 
-  PROJECTS.map((project, index) => {
-    // Project details card
+  PROJECTS.forEach((project, idx) => {
+    // Minimal project display matching Experience section style
     const projectCard = [
-      theme.highlight((index + 1).toString() + ". " + project.title),
+      theme.muted("─".repeat(50)),
       "",
+      theme.highlight(project.title),
       chalk.white(project.description),
       "",
-      theme.muted("Tech Stack:"),
-      project.skills.map((s) => theme.primary(`• ${s}`)).join(" "),
-    ].join("\n");
+      theme.muted("Stack: ") +
+        project.skills.slice(0, 5).map((s) => theme.primary(s)).join(theme.muted(" • ")) +
+        (project.skills.length > 5 ? theme.muted(` +${project.skills.length - 5}`) : ""),
+      "",
+      theme.primary("🔗 ") +
+        theme.secondary.underline(project.liveLink) +
+        theme.muted("  │  ") +
+        theme.primary("</> ") +
+        theme.secondary.underline(project.githubLink),
+      "",
+    ]
+      .filter(Boolean)
+      .join("\n");
 
-    console.log(
-      boxen(projectCard, {
-        padding: 1,
-        margin: { left: 2, right: 2 },
-        borderStyle: "round",
-        borderColor: "magenta",
-      }),
-    );
-
-    console.log();
-
-    // Key features
-    if (project.descriptionList.length > 0) {
-      console.log(theme.highlight("  Key Features:"));
-      console.log();
-      project.descriptionList.forEach((desc, idx) => {
-        console.log(`    ${theme.success(idx + 1 + ".")} ${chalk.white(desc)}`);
-      });
-      console.log();
-    }
-
-    // Links
-    console.log(theme.highlight("  Links:"));
-    console.log();
-    console.log(
-      `    ${theme.primary("→")} GitHub: ${theme.secondary.underline(project.githubLink)}`,
-    );
-    console.log(
-      `    ${theme.primary("→")} Live:   ${theme.secondary.underline(project.liveLink)}`,
-    );
-    console.log();
+    str += "  " + projectCard.split("\n").join("\n  ") + "\n";
   });
+
+  console.log(str);
+  console.log(theme.muted("  ─".repeat(50)));
+  console.log();
 }
 
 export function showExperience() {
@@ -198,34 +193,28 @@ export function showExperience() {
 
     // Experience card
     const expCard = [
-      idx === 0 ? theme.muted("-").repeat(40) : "",
+      theme.muted("─".repeat(50)),
+      "",
       theme.highlight(exp.title),
       theme.primary(`@ ${exp.company}`) + theme.muted(` • ${exp.type}`),
       theme.muted(timeline),
       "",
-      theme.muted("-").repeat(40),
-      // ...exp.descriptionList.map((d) => chalk.white(`  • ${d}`)),
     ]
       .filter(Boolean)
       .join("\n");
 
-    str += expCard + "\n";
-    // Skills used
-    // console.log(
-    //   theme.muted("    Skills: ") +
-    //     exp.skills.map((s) => theme.primary(s)).join(theme.muted(" • ")),
-    // );
+    str += "  " + expCard.split("\n").join("\n  ") + "\n";
   });
 
   console.log(str);
-
+  console.log(theme.muted("  ─".repeat(50)));
   console.log();
 }
 
 export async function showContact() {
   console.log(theme.success.bold("\n  📬  GET IN TOUCH\n"));
 
-  // Contact info card
+  // Contact info card with enhanced formatting
   const contactCard = [
     theme.highlight("Let's Connect!"),
     "",
@@ -252,5 +241,7 @@ export async function showContact() {
     }),
   );
 
+  console.log();
+  console.log(theme.muted("  Looking forward to hearing from you! 👋"));
   console.log();
 }
