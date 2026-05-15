@@ -7,7 +7,7 @@ export const USER = {
   fullName: "Uday Kiran Bandarugalla",
   description: `I'm Udaykiran, a Software Developer at HexaCluster, with 1.5 years of experience building high-quality web applications using Next.js, React, and TypeScript. I also work on scalable backend services using Node.js, Spring Boot, and Golang, focusing on microservices architecture.`,
   gender: "Male",
-  portfolio : "https://udaykiran.dev",
+  portfolio: "https://udaykiran.dev",
   socials: [
     {
       name: "Github",
@@ -23,9 +23,9 @@ export const USER = {
     },
     {
       name: "X",
-      href: "https://x.com/udaykirancodes",
+      href: "https://x.com/udaykirandev",
       icon: "/assets/x.webp",
-      username: "@udaykirancodes",
+      username: "@udaykirandev",
     },
   ],
 };
@@ -138,7 +138,7 @@ export const PROJECTS: Project[] = [
   {
     title: "udaykiran.dev",
     description: "A minimal responsive portfolio with component registry",
-    logo: "/assets/tech-stack/react.svg",
+    logo: "https://udaykiran.dev/assets/portfolio-light.png",
     githubLink: "https://github.com/udaykirancodes/udaykiran.dev",
     liveLink: "https://udaykiran.dev",
     skills: ["React", "Next.js", "Tailwind CSS", "TypeScript"],
@@ -149,6 +149,78 @@ export const PROJECTS: Project[] = [
       "Component registry",
       "Re-Usable components",
       "Shadcn CLI supported",
+    ],
+  },
+  {
+    title: "turbo-code",
+    description:
+      "A collaborative, real-time code playground and microservices-based evaluation platform",
+    logo: "https://udaykiran.dev/assets/turbo-code-light.png",
+    githubLink: "https://github.com/udaykirancodes/turbo-code",
+    liveLink: "https://code.udaykiran.dev",
+    skills: ["React", "NodeJS", "TypeScript", "yJS", "Docker", "Microservices"],
+    isExpanded: false,
+    descriptionList: [
+      "Real-time code collaboration via websockets",
+      "Interactive code execution environment",
+      "Containerized microservice architecture",
+      "Project member management and access control",
+    ],
+  },
+  {
+    title: "npx-udaykiran",
+    description:
+      "An interactive terminal UI portfolio built for the modern developer",
+    logo: "https://udaykiran.dev/assets/npx-udaykiran-light.png",
+    githubLink: "https://github.com/udaykirancodes/npx-udaykiran",
+    liveLink: "https://www.npmjs.com/package/udaykiran",
+    skills: ["Node.js", "TypeScript", "Terminal UI", "CLI UX", "ESM", "tsup"],
+    isExpanded: false,
+    descriptionList: [
+      "Interactive terminal UI (TUI) experience",
+      "Keyboard-driven navigation",
+      "Runs directly in terminal via npx udaykiran",
+      "Beautiful colored layouts and prompts",
+    ],
+  },
+  {
+    title: "kinetic-studio",
+    description:
+      "A developer-first motion studio for designing and rendering kinetic typography videos with React and Remotion",
+    logo: "/assets/kinetic-studio-light.png",
+    githubLink: "https://github.com/udaykirancodes/kinetic-studio",
+    liveLink: "https://kinetics.udaykiran.dev/",
+    skills: ["React", "Next.js", "Remotion", "TypeScript"],
+    isExpanded: false,
+    descriptionList: [
+      "Kinetic typography video editing",
+      "Programmatic video rendering using React & Remotion",
+      "Live video preview inside the browser",
+      "Frame-accurate sequencing and timing control",
+      "Editor-style UX inspired by motion design tools",
+    ],
+  },
+  {
+    title: "prettiefy",
+    description:
+      "A client-side screenshot beautifier for creating gorgeous, professional mockups instantly",
+    logo: "/assets/prettiefy-light.png",
+    githubLink: "https://github.com/udaykirancodes/prettiefy",
+    liveLink: "https://prettiefy.udaykiran.dev",
+    skills: [
+      "Next.js",
+      "Tailwind CSS",
+      "Zustand",
+      "TypeScript",
+      "html-to-image",
+    ],
+    isExpanded: false,
+    descriptionList: [
+      "Client-side Canvas rendering architecture",
+      "Dynamic macOS and Browser window frames",
+      "Responsive image layout constraints",
+      "Custom backgrounds and advanced shadow controls",
+      "True client-side unique visitor deduplication tracking",
     ],
   },
 ];

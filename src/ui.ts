@@ -152,35 +152,67 @@ export function showTechStack() {
 
 export function showProjects() {
   console.log(theme.secondary.bold("\n  🚀  PROJECTS\n"));
-  let str = "";
+  const terminalWidth = process.stdout.columns ?? 100;
+  const cardWidth = Math.min(Math.max(terminalWidth - 10, 56), 96);
 
-  PROJECTS.forEach((project, idx) => {
-    // Minimal project display matching Experience section style
-    const projectCard = [
-      theme.muted("─".repeat(50)),
-      "",
-      theme.highlight(project.title),
-      chalk.white(project.description),
-      "",
-      theme.muted("Stack: ") +
-        project.skills.slice(0, 5).map((s) => theme.primary(s)).join(theme.muted(" • ")) +
-        (project.skills.length > 5 ? theme.muted(` +${project.skills.length - 5}`) : ""),
-      "",
-      theme.primary("🔗 ") +
-        theme.secondary.underline(project.liveLink) +
-        theme.muted("  │  ") +
-        theme.primary("</> ") +
-        theme.secondary.underline(project.githubLink),
-      "",
-    ]
-      .filter(Boolean)
+  const formatWrappedList = (items: string[], indent: string) => {
+    const rows: string[] = [];
+    let currentRow = indent;
+
+    items.forEach((item) => {
+      const token = rows.length === 0 && currentRow === indent ? item : ` • ${item}`;
+      if ((currentRow + token).length > cardWidth - 4) {
+        rows.push(currentRow);
+        currentRow = indent + item;
+        return;
+      }
+      currentRow += token;
+    });
+
+    if (currentRow.trim()) {
+      rows.push(currentRow);
+    }
+
+    return rows.join("\n");
+  };
+
+  const cards = PROJECTS.map((project, idx) => {
+    const highlights = project.descriptionList
+      .slice(0, 3)
+      .map((item) => `${theme.success("•")} ${chalk.white(item)}`)
       .join("\n");
 
-    str += "  " + projectCard.split("\n").join("\n  ") + "\n";
+    const content = [
+      `${theme.muted(`#${String(idx + 1).padStart(2, "0")}`)} ${theme.highlight(project.title)}`,
+      chalk.white(project.description),
+      "",
+      formatWrappedList(
+        project.skills.map((skill) => theme.primary(skill)),
+        theme.muted("Stack: "),
+      ),
+      "",
+      highlights,
+      "",
+      `${theme.primary("Live:")} ${theme.secondary.underline(project.liveLink)}`,
+      `${theme.primary("Code:")} ${theme.secondary.underline(project.githubLink)}`,
+    ].join("\n");
+
+    return boxen(content, {
+      padding: { top: 0, bottom: 0, left: 1, right: 1 },
+      margin: { left: 2, right: 2, bottom: 1 },
+      borderStyle: "round",
+      borderColor: idx === 0 ? "cyan" : "blue",
+      width: cardWidth,
+    });
   });
 
-  console.log(str);
-  console.log(theme.muted("  ─".repeat(50)));
+  console.log(
+    theme.muted(
+      `  Showing ${PROJECTS.length} projects in a compact overview`,
+    ),
+  );
+  console.log();
+  console.log(cards.join("\n"));
   console.log();
 }
 
